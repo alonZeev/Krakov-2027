@@ -1,0 +1,17 @@
+{
+  "short_name": "פולין 8 ימים",
+  "name": "תוכנית טיול ל-8 ימים בדרום פולין",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#ffffff",
+  "theme_color": "#dc143c",
+  "display": "standalone",
+  "orientation": "portrait"
+}
