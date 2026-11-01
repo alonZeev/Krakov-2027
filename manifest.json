@@ -1,17 +1,23 @@
 {
-  "short_name": "פולין 8 ימים",
-  "name": "תוכנית טיול ל-8 ימים בדרום פולין",
+  "short_name": "קרקוב",
+  "name": "טיול בדרום פולין 2026",
   "icons": [
     {
-      "src": "icon.png",
-      "sizes": "512x512",
+      "src": "icons/icon-192.png",
       "type": "image/png",
-      "purpose": "any maskable"
+      "sizes": "192x192"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": "./index.html",
-  "background_color": "#ffffff",
+  "background_color": "#f8fafc",
   "theme_color": "#dc143c",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "he"
 }

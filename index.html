@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>טיול בדרום פולין - 8 ימים</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="styles.css">
-  <meta name="theme-color" content="#dc143c">
-  <link rel="icon" type="image/png" href="icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תוכנית טיול ל-8 ימים בדרום פולין</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#dc143c">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 <body>
 
-  <header>
-    <h1>🇵🇱 טיול בדרום פולין - 8 ימים</h1>
-    <div class="date-picker-container">
-      <label for="trip-date">תאריך התחלה:</label>
-      <input type="date" id="trip-date">
-    </div>
-  </header>
+    <header class="app-header">
+        <div class="header-titles">
+            <h1>🇵🇱 תוכנית טיול בדרום פולין</h1>
+            <span class="trip-dates">8 ימים בדרום פולין, זקופנה וקרקוב</span>
+        </div>
+        <button id="installBtn" class="btn-install" hidden>התקן אפליקציה</button>
+    </header>
 
-  <nav id="day-nav"></nav>
+    <main class="container">
+        <div id="offlineBanner" class="offline-banner" hidden>
+            ⚠️ מצב אופליין - הנתונים מוצגים מזיכרון המטמון
+        </div>
 
-  <main id="content-area"></main>
+        <div id="hotelCard" class="hotel-card"></div>
+        <nav class="days-nav" id="daysNav"></nav>
+        <section class="itinerary-list" id="itineraryList"></section>
+    </main>
 
-  <script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

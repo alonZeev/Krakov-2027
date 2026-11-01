@@ -1,192 +1,232 @@
-:root {
-  --primary-color: #dc143c;
-  --secondary-color: #1a252f;
-  --bg-color: #f4f6f8;
-  --card-bg: #ffffff;
-  --text-color: #333333;
-  --border-radius: 12px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
+/* עיצוב כללי ומשתנים */
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  direction: rtl;
-  padding-bottom: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
 }
 
-header {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 16px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
-header h1 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
+/* כותרת ראשית מעוצבת בצבעי דגל פולין/אדום אלגנטי */
+.app-header {
+    background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+    color: white;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    text-align: center;
 }
 
-.date-picker-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.9rem;
+.header-titles h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
 }
 
-.date-picker-container input {
-  border: none;
-  background: transparent;
-  color: white;
-  font-weight: bold;
-  font-size: 0.9rem;
-  outline: none;
-  cursor: pointer;
+.trip-dates {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.18);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #fef2f2;
+    margin-top: 0.35rem;
 }
 
-nav {
-  display: flex;
-  overflow-x: auto;
-  background-color: white;
-  padding: 10px;
-  gap: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+/* כרטיס בית המלון המעוצב */
+.hotel-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-right: 4px solid #dc143c;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    font-size: 0.95rem;
 }
 
-.day-btn {
-  flex: 0 0 auto;
-  padding: 8px 16px;
-  border: 1px solid #e0e0e0;
-  background-color: white;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s;
-  color: #555;
+/* סרגל ניווט ימים */
+.days-nav {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.25rem 0 1rem 0;
 }
 
-.day-btn.active {
-  background-color: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
+.days-nav::-webkit-scrollbar {
+    display: none;
 }
 
-main {
-  padding: 16px;
-  max-width: 600px;
-  margin: 0 auto;
+.day-tab {
+    flex: 0 0 auto;
+    background: white;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 44px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
-.day-title {
-  font-size: 1.3rem;
-  color: var(--secondary-color);
-  margin-bottom: 12px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid var(--primary-color);
+.day-tab.active {
+    background: #dc143c;
+    color: white;
+    border-color: #dc143c;
+    box-shadow: 0 4px 6px -1px rgba(220, 20, 60, 0.3);
 }
 
-.section {
-  background: var(--card-bg);
-  border-radius: var(--border-radius);
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+/* כרטיסי הפעילויות */
+.spot-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    position: relative;
 }
 
-.section h3 {
-  color: var(--primary-color);
-  margin-bottom: 12px;
-  font-size: 1.1rem;
+.spot-card:not(:last-child):after {
+    content: '';
+    position: absolute;
+    bottom: -0.75rem;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background: #cbd5e1;
+    border-radius: 2px;
 }
 
-.timeline-item {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed #eee;
+.spot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-.timeline-item:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
+.spot-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
 }
 
-.time {
-  font-weight: bold;
-  color: var(--primary-color);
-  min-width: 85px;
-  font-size: 0.9rem;
+.spot-time {
+    background: #f1f5f9;
+    color: #334155;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
-.details h4 {
-  font-size: 1rem;
-  margin-bottom: 4px;
+.spot-desc {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.925rem;
+    color: #475569;
+    line-height: 1.5;
 }
 
-.details p {
-  font-size: 0.88rem;
-  color: #666;
-  line-height: 1.4;
+.spot-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #dc143c;
+    text-decoration: none;
+    transition: opacity 0.2s;
 }
 
-.place-card {
-  border: 1px solid #edf2f7;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 10px;
-  background: #f8fafc;
+.spot-link:hover {
+    opacity: 0.8;
 }
 
-.place-card h4 {
-  font-size: 0.95rem;
-  color: var(--secondary-color);
-  margin-bottom: 4px;
+/* באנר אופליין */
+.offline-banner {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 0.75rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border: 1px solid #fde68a;
 }
 
-.place-card p {
-  font-size: 0.85rem;
-  color: #666;
-  margin-bottom: 8px;
+.btn-install {
+    background: #10b981;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-.btn-map {
-  display: inline-block;
-  padding: 6px 12px;
-  background-color: #25d366;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: bold;
+.notes-card {
+    background: #fff8f8;
+    border: 1px solid #fecdd3;
+    border-right: 4px solid #e11d48;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-top: 1.5rem;
 }
 
-.important-notes {
-  background: #fff8f8;
-  border-right: 4px solid var(--primary-color);
+.notes-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    color: #9f1239;
 }
 
-.important-notes ul {
-  padding-right: 18px;
+.notes-card ul {
+    margin: 0;
+    padding-right: 1.2rem;
+    color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
-.important-notes li {
-  font-size: 0.88rem;
-  color: #444;
-  margin-bottom: 6px;
+@media (max-width: 480px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    .app-header {
+        padding: 1rem;
+    }
+
+    .header-titles h1 {
+        font-size: 1.35rem;
+    }
+
+    .spot-card {
+        padding: 1rem;
+    }
+
+    .spot-title {
+        font-size: 0.95rem;
+    }
 }
