@@ -1,280 +1,274 @@
-const itinerary = [
-  {
-    day: 1,
-    title: "יום 1: נחיתה • פארק לאומי אויצוב • קניות בקרקוב • נסיעה לזאב",
-    timeline: [
-      { time: "09:00 - 10:30", title: "נחיתה והשכרת רכב", desc: "נחיתה בשדה התעופה (קרקוב/קטוביץ'). סיום סידורי דרכונים, איסוף המזודות וקבלת הרכב." },
-      { time: "10:30 - 14:30", title: "טיול בפארק הלאומי אויצוב (Ojców)", desc: "סיור בטבע: חניה במרכז אויצוב, הליכה לשער קרקוב ועמק פרונדניק, ונסיעה למצבת הרקולס וטירת פיסקובה סקאלה." },
-      { time: "14:30 - 17:00", title: "קניות ב-Factory Kraków", desc: "נסיעה למתחם האאוטלט Factory Kraków לקניות והתרעננות." },
-      { time: "17:00 - 18:30", title: "נסיעה והגעה למלון בזאב", desc: "נסיעה לאזור ההררי של זאב. הגעה ל-Hotel Redyk Ski Relax, צ'ק-אין ומנוחה." }
-    ],
-    places: [
-      { name: "פארק אויצוב - נקודה 1 (מרכז)", note: "חניה מוסדרת בתשלום בכניסה למסלול", link: "https://maps.google.com/?q=Parking+Pod+Zamkiem,+Ojcow" },
-      { name: "פארק אויצוב - נקודה 2 (טירה)", note: "חניה סמוכה למצבת הרקולס ולטירה", link: "https://maps.google.com/?q=Pieskowa+Skala+Castle+Parking" },
-      { name: "Factory Krakow מתחם הקניות", note: "Prof. A. Rożańskiego 32, Modlniczka - חניה חופשית בשפע", link: "https://maps.google.com/?q=Prof.+A.+Rozanskiego+32,+Modlniczka" },
-      { name: "מלון Redyk Ski&Relax", note: "Potoczki 20, 34-521 Ząb", link: "https://maps.google.com/?q=Potoczki+20,+34-521+Zab" }
-    ],
-    notes: [
-      "איסוף רכב: מומלץ לבדוק תקינות הרכב, שריטות וציוד חובה לפני היציאה.",
-      "ציוד לפארק אויצוב: מומלץ להצטייד בנעלי הליכה נוחות ומים.",
-      "תשלום חניה: התשלום מתבצע במדחנים או באפליקציות מקומיות."
-    ]
-  },
-  {
-    day: 2,
-    title: "יום 2: זקופנה • אגם מורסקו אוקו, צ'ארני סטאב ומרחצאות חוחולובסקה",
-    timeline: [
-      { time: "06:45 - 07:45", title: "יציאה מוקדמת ונסיעה לחניון", desc: "יציאה ממלון Redyk ונסיעה לחניון Palenica Białczańska (כ-45 דק')." },
-      { time: "08:00 - 11:00", title: "מסלול הליכה לאגם מורסקו אוקו", desc: "הליכה רגלית פסטורלית של כ-8 ק"מ (כ-2.5 שעות) בתוך שמורת הטבע עד לאגם האלפיני." },
-      { time: "11:00 - 13:00", title: "טיפוס לאגם העליון - צ'ארני סטאב", desc: "הקפת חלק מפורט של מורסקו אוקו וטיפוס תלול (40-50 דק') לאגם השחור." },
-      { time: "13:00 - 15:30", title: "ירידה חזרה לחניון פאלניצה", desc: "הליכה חזרה מהאגם לכיוון החניון והפסקה קלה לרענון." },
-      { time: "15:30 - 16:15", title: "נסיעה למרחצאות חוחולובסקה", desc: "איסוף הרכב ונסיעה פסטורלית (כ-45 דק') ל-Chochołowskie Termy." },
-      { time: "16:30 - 20:00", title: "בילוי במרחצאות הטרמיים", desc: "בילוי במרחצאות החמים, בריכות ג'קוזי, בריכות פתוחות וסאונות." },
-      { time: "20:00 - 20:25", title: "חזרה למלון בזאב", desc: "נסיעה קצרה (20-25 דק') חזרה למלון Redyk." }
-    ],
-    places: [
-      { name: "נקודת מוצא - Hotel Redyk", note: "Potoczki 20, 34-521 Ząb", link: "https://maps.google.com/?q=Potoczki+20,+34-521+Zab" },
-      { name: "חניון מורסקו אוקו", note: "Palenica Białczańska - חובה הזמנה מראש!", link: "https://maps.google.com/?q=Palenica+Bialczanska,+Jurgow" },
-      { name: "מרחצאות חוחולובסקה", note: "Chochołów 400, 34-471 Chochołów", link: "https://maps.google.com/?q=Chocholow+400,+Chocholow" }
-    ],
-    notes: [
-      "כרטיסי חנייה ושמורה: חובה לרכוש כרטיס חנייה ב-Palenica Białczańska מראש באתר TPN!",
-      "ציוד נדרש: נעלי הליכה נוחות, קרם הגנה, מים, מגבות וכפכפים למרחצאות.",
-      "כרטיסי מרחצאות: מומלץ לרכוש מראש לעקיפת התורים."
-    ]
-  },
-  {
-    day: 3,
-    title: "יום 3: זקופנה • הר קספרובי וורך ומדרחוב קרופובקי",
-    timeline: [
-      { time: "10:00 - 10:30", title: "נסיעה וחנייה ברונדו", desc: "נסיעה מהמלון לחניון מסודר סביב Rondo Jan Pawła II בזקופנה." },
-      { time: "10:30 - 10:45", title: "מונית שירות לתחנת הרכבל", desc: "עלייה על Busik בכיכר הרונדו לנסיעה קצרה לקוז'ניצ'ה (Kuźnice)." },
-      { time: "11:00 - 15:30", title: "הר קספרובי וורך וירידה רגלית", desc: "עלייה ברכבל לתצפית בפסגה (1,987 מ'), ירידה רגלית לעמק Hala Gąsienicowa, עצירה בבקתת Murowaniec והמשך ירידה לקוז'ניצ'ה." },
-      { time: "15:30 - 16:00", title: "חזרה לרכב ונסיעה למרכז העיר", desc: "חזרה במיניבוס לרונדו, איסוף הרכב ונסיעה לחניון ליד מדרחוב קרופובקי." },
-      { time: "16:00 - 19:00", title: "טיול במדרחוב קרופובקי", desc: "סיור רגלי במדרחוב התוסס, חנויות אופנה, מזכרות ודוכני גבינה מעושנת (Oscypek)." },
-      { time: "19:00+", title: "חזרה למלון", desc: "חזרה למלון Hotel Redyk להתארגנות ומנוחה." }
-    ],
-    places: [
-      { name: "חניון רונדו (קוז'ניצ'ה)", note: "Karłowicza, 34-500 Zakopane - מעבר למיניבוס", link: "https://maps.google.com/?q=Karlowicza,+34-500+Zakopane" },
-      { name: "תחנת רכבל Kasprowy", note: "Kuźnice 14, 34-500 Zakopane (גישה בשאטל)", link: "https://maps.google.com/?q=Kuznice+14,+34-500+Zakopane" },
-      { name: "חניון מרכז קרופובקי", note: "Mariusz Zaruskiego 4, 34-500 Zakopane", link: "https://maps.google.com/?q=Mariusz+Zaruskiego+4,+34-500+Zakopane" }
-    ],
-    notes: [
-      "רכבל לקספרובי: חובה לרכוש כרטיסים מראש באתר PKL לשעה מוגדרת.",
-      "ציוד לירידה הרגלית: מומלץ להצטייד בנעלי הליכה ומקלות הליכה.",
-      "מזומן: הנסיעה במוניות השירות עולה כ-5-10 PLN לאדם (להחזיק מזומן)."
-    ]
-  },
-  {
-    day: 4,
-    title: "יום 4: אושוויץ-בירקנאו, הגעה לקרקוב והחזרת הרכב",
-    timeline: [
-      { time: "07:45 - 10:15", title: "נסיעה למוזיאון אושוויץ", desc: "יציאה מוקדמת מזאב ונסיעה צפונה (כ-2.5 שעות) לאושוונצ'ים." },
-      { time: "10:15 - 10:30", title: "הגעה ובידוק ביטחוני", desc: "חנייה במגרש של אושוויץ 1, מעבר בידוק קפדני והצגת דרכונים." },
-      { time: "10:30 - 14:00", title: "סיור מודרך באושוויץ 1 ובבירקנאו", desc: "סיור בבלוקים באושוויץ 1, מעבר בשאטל למחנה בירקנאו וסיור ברציף ובצריפים." },
-      { time: "14:15 - 15:30", title: "נסיעה מאושוויץ לקרקוב", desc: "איסוף הרכב ונסיעה בכביש A4 האגרה לקרקוב." },
-      { time: "15:30 - 16:30", title: "צ'ק-אין במלון The Loft", desc: "הגעה ל-The Loft Hotel Adults Only Krakow, פריקת מזודות והתארגנות." },
-      { time: "16:30 - 17:30", title: "החזרת הרכב השכור", desc: "נסיעה לנקודת החזרת הרכב (תחנה מרכזית/שדה תעופה) וחזרה ב-Uber." },
-      { time: "18:00+", title: "סיור ערב וארוחת ערב", desc: "סיור רגלי ברובע היהודי (Kazimierz) או בכיכר השוק (Rynek Glowny)." }
-    ],
-    places: [
-      { name: "חניון מוזיאון אושוויץ 1", note: "Leszczyńskiej 16, Oświęcim", link: "https://maps.google.com/?q=Leszczynskiej+16,+Oswiecim" },
-      { name: "The Loft Hotel", note: "Ul. Dietla 113, 31-031 Kraków", link: "https://maps.google.com/?q=Ul.+Dietla+113,+Krakow" },
-      { name: "כיכר השוק / העיר העתיקה", note: "Rynek Główny 1, Kraków", link: "https://maps.google.com/?q=Rynek+Glowny+1,+Krakow" }
-    ],
-    notes: [
-      "דרכונים: חובה להביא דרכון מקורי לכל משתתף לסיור באושוויץ!",
-      "תיקים: מותר להכניס תיקים קטנים בלבד שלא יעלו על 30x20x10 ס"מ.",
-      "החזרת רכב: מומלץ לצלם את מנגנון הדלק ומצב הרכב בעת ההחזרה."
-    ]
-  },
-  {
-    day: 5,
-    title: "יום 5: קרקוב • העיר העתיקה, המוזיאון התת-קרקעי ושופינג ב-Bonarka",
-    timeline: [
-      { time: "09:30 - 12:30", title: "סיור מודרך בעברית (ניסן צור)", desc: "מפגש בכיכר השוק, סיור בעיר העתיקה, ארמון הוואוול, וברובע היהודי." },
-      { time: "12:30 - 14:00", title: "ארוחת צהריים", desc: "הפסקה לארוחת צהריים באחת המסעדות בכיכר או ברחוב Florianska." },
-      { time: "14:30 - 16:30", title: "המוזיאון התת-קרקעי (Rynek Podziemny)", desc: "סיור במוזיאון האינטראקטיבי מתחת לכיכר השוק (קרקוב בימי הביניים)." },
-      { time: "16:30 - 18:00", title: "פארק פלאנטי ושער הברביקן", desc: "הליכה בטבעת הירוקה, ביקור בשער הברביקן ובשער פלוריאן." },
-      { time: "18:00 - 21:00", title: "שופינג בקניון Bonarka City Center", desc: "הגעה ב-Uber/תחבורה ציבורית לקניון Bonarka (כולל סניף Primark ענק)." },
-      { time: "21:00+", title: "חזרה למלון", desc: "חזרה במונית למלון The Loft." }
-    ],
-    places: [
-      { name: "נקודת מפגש - כיכר השוק", note: "Rynek Główny 1, Kraków", link: "https://maps.google.com/?q=Rynek+Glowny+1,+Krakow" },
-      { name: "המוזיאון התת-קרקעי", note: "Rynek Główny 1 (Sukiennice), Kraków", link: "https://maps.google.com/?q=Rynek+Glowny+1,+Krakow" },
-      { name: "Bonarka City Center", note: "Kamieńskiego 11, Kraków", link: "https://maps.google.com/?q=Kamienskiego+11,+Krakow" }
-    ],
-    notes: [
-      "סיור מודרך: מומלץ לתאם מראש מועד מדויק עם ניסן צור.",
-      "המוזיאון התת-קרקעי: הכניסה מוגבלת בזמן - חובה להגיע בזמן המוזמן.",
-      "Bonarka: פתוח מ-10:00 עד 21:00."
-    ]
-  },
-  {
-    day: 6,
-    title: "יום 6: קרקוב • מפעל שינדלר, כיכר הכיסאות והופעה של Rod Stewart",
-    timeline: [
-      { time: "09:00 - 11:30", title: "סיור במפעל שינדלר", desc: "ביקור במוזיאון המפורסם בתערוכה 'קרקוב תחת הכיבוש הנאצי' ובמשרד שינדלר." },
-      { time: "11:30 - 13:30", title: "גטו פודגורז'ה וכיכר הכיסאות", desc: "סיור בכיכר גיבורי הגטו (אנדרטת הכיסאות), בית מרקחת 'תחת הנשר' וגשר קלאטרה." },
-      { time: "13:30 - 17:00", title: "ארוחת צהריים ומנוחה", desc: "חזרה למלון The Loft למנוחה והתארגנות לקראת ערב ההופעה." },
-      { time: "17:30 - 22:30", title: "מופע Rod Stewart ב-TAURON Arena", desc: "יציאה לארנה (פתיחת שערים 18:00, תחילת מופע 19:30). חזרה קלה בחשמלית." }
-    ],
-    places: [
-      { name: "מפעל שינדלר", note: "Lipowa 4, 30-702 Kraków", link: "https://maps.google.com/?q=Lipowa+4,+Krakow" },
-      { name: "כיכר הכיסאות (גטו פודגורז'ה)", note: "Plac Bohaterów Getta, Kraków", link: "https://maps.google.com/?q=Plac+Bohaterow+Getta,+Krakow" },
-      { name: "TAURON Arena Kraków", note: "Stanisława Lema 7, Kraków (גישה בחשמלית 1/22)", link: "https://maps.google.com/?q=Stanislawa+Lema+7,+Krakow" }
-    ],
-    notes: [
-      "הגעה להופעה: מומלץ לקחת חשמלית קו 1 או 22 מתחנת Hala Targowa (כ-10 דק' נסיעה).",
-      "Uber/מונית: מומלץ להזמין שעה וחצי מראש בשל העומסים.",
-      "בסיום המופע: החשמליות מתוגברות ונוסעות ישירות בחזרה."
-    ]
-  },
-  {
-    day: 7,
-    title: "יום 7: קרקוב • סיור ברובע היהודי (קז'ימייז') ושופינג ב-Galeria Bronowice",
-    timeline: [
-      { time: "09:30 - 13:00", title: "סיור עומק ברובע היהודי", desc: "ביקור ברחוב שרוקה, בתי הכנסת העתיקים, חצר 'רשימת שינדלר', וטעימת זאפייקנקה בכיכר נובי." },
-      { time: "13:30 - 18:00", title: "שופינג ב-Galeria Bronowice", desc: "נסיעה במונית/חשמלית לקניון המודרני בצפון-מערב העיר (חוויית קניות רגועה)." },
-      { time: "18:30 - 20:00", title: "חזרה למלון והתרעננות", desc: "פורקים שקיות ומתרעננים במלון The Loft." },
-      { time: "20:00 - 22:30", title: "ערב ססגוני בקז'ימייז'", desc: "ארוחת ערב במסעדה עם מוזיקת כליזמרים חיה (כמו Ariel / Klezmer Hois)." }
-    ],
-    places: [
-      { name: "מרכז הרובע היהודי", note: "Szeroka 24, 31-053 Kraków (5 דק' הליכה מהמלון)", link: "https://maps.google.com/?q=Szeroka+24,+Krakow" },
-      { name: "Galeria Bronowice", note: "Stawowa 61, 31-346 Kraków", link: "https://maps.google.com/?q=Stawowa+61,+Krakow" }
-    ],
-    notes: [
-      "נגישות: המלון במרחק 500 מטרים בלבד מלב רובע קז'ימייז'.",
-      "קניות: Galeria Bronowice מציע חוויה שקטה ללא תורים.",
-      "אוכל: מומלץ לנסות זאפייקנקה במבנה העגול ב-Plac Nowy."
-    ]
-  },
-  {
-    day: 8,
-    title: "יום 8: קרקוב • נהר הויסלה, Galeria Krakowska וטיסה חזרה",
-    timeline: [
-      { time: "09:30 - 12:00", title: "צ'ק-אאוט וטיול על הויסלה", desc: "שמירת מזודות בקבלה, הליכה לאורך נהר הויסלה ופסל הדרקון (Smok Wawelski)." },
-      { time: "12:30 - 16:30", title: "השלמות קניות בגלריה קרקובקה", desc: "קניות אחרונות במתחם הצמוד לתחנה המרכזית וארוחת צהריים." },
-      { time: "17:00 - 18:00", title: "איסוף מזודות ונסיעה לשדה", desc: "איסוף הציוד, הליכה/חשמלית לתחנה המרכזית Kraków Główny ורכבת לשדה (17 דק')." },
-      { time: "18:30 - 21:30", title: "שדה התעופה וטיסה חזרה", desc: "הגעה לשדה (KRK), צ'ק-אין, Tax Free וטיסה חזרה לישראל." }
-    ],
-    places: [
-      { name: "קניון Galeria Krakowska", note: "Pawia 5, 31-154 Kraków", link: "https://maps.google.com/?q=Pawia+5,+Krakow" },
-      { name: "תחנת רכבת מרכזית Kraków Główny", note: "רכבת ישירה לשדה התעופה (17 דקות)", link: "https://maps.google.com/?q=Krakow+Glowny+Station" },
-      { name: "שדה התעופה קרקוב (KRK)", note: "Kapt. M. Medweckiego 1, Balice", link: "https://maps.google.com/?q=Kapt.+M.+Medweckiego+1,+Balice" }
-    ],
-    notes: [
-      "תשלום: ניתן לשלם 100% באשראי/Apple Pay/Google Pay.",
-      "רכבת לשדה: יוצאת כל 30 דקות (עלות ~17 PLN).",
-      "Tax Free: ברכישות מעל 200 PLN לבקש טופס ולהחתימש במכס."
-    ]
-  }
+const montenegroTrip = [
+    {
+        day: 1, date: "19/09 (ש')", region: "טיסת הלוך ובודווה", icon: "✈️",
+        hotelName: "Infinity Hotel & More, Budva - כולל ארוחת בוקר", 
+        hotelUrl: "https://www.booking.com/hotel/me/infinity-budva.he.html",
+        spots: [
+            { time: "09:10", name: "✈️ טיסת הלוך: ISRAIR 6H:173", desc: "המראה מנתב\"ג בשעה 09:10. <a href='https://www.iaa.gov.il/airports/ben-gurion/flight-board/' target='_blank' rel='noopener' style='color:#2563eb;text-decoration:underline;'>ללוח הטיסות של רשות שדות התעופה</a>", map: "Ben Gurion Airport", waze: "Ben Gurion Airport" },
+            { time: "נחיתה", name: "נחיתה בנמל התעופה טיבאט (Tivat)", desc: "נחיתה במונטנגרו, איסוף המזוודות והרכב השכור בדלפק.", map: "Tivat Airport", waze: "Tivat Airport" },
+            { time: "נסיעה", name: "🚘 נסיעה לפארק לובצ'ן", desc: "זמן נסיעה מוערך: כ-45 דקות מרחק מנמל התעופה.", map: "Njegos Mausoleum", waze: "Njegos Mausoleum" },
+            { time: "תחנה 1", name: "פארק לובצ'ן ומאוזוליאום נייגוש", desc: "טיפוס 461 מדרגות למאוזוליאום לתצפית פנורמית מרהיבה.", map: "Njegos Mausoleum", waze: "Njegos Mausoleum" },
+            { time: "נסיעה", name: "🚘 נסיעה לבודווה", desc: "זמן נסיעה מוערך: כ-50 דקות בירידה לכיוון החוף.", map: "Infinity Hotel Budva", waze: "Infinity Hotel Budva" },
+            { time: "תחנה 2", name: "הגעה למלון בבודווה", desc: "צ'ק-אין במלון, התארגנות ומנוחה.", map: "Infinity Hotel Budva", waze: "Infinity Hotel Budva" },
+            { time: "ערב", name: "סיור ערב בבודווה", desc: "הליכה רגועה בסמטאות העיר העתיקה וארוחת ערב.", map: "Budva Old Town", waze: "Budva Old Town" }
+        ]
+    },
+    {
+        day: 2, date: "20/09 (א')", region: "בודווה", icon: "🏰",
+        hotelName: "Infinity Hotel & More, Budva - כולל ארוחת בוקר", 
+        hotelUrl: "https://www.booking.com/hotel/me/infinity-budva.he.html",
+        spots: [
+            { time: "בוקר", name: "מצודת הציטדלה וכנסיות העיר העתיקה", desc: "ביקור במבצר הציטדלה העתיק, תצפית מהחומות וכנסיות St. John & Holy Trinity.", map: "Citadel Budva", waze: "Citadel Budva" },
+            { time: "לפנה\"צ", name: "חופי מורן (Mogren 1 & Mogren 2)", desc: "הליכה בטיילת ליד פסל הבלרינה, מעבר דרך שביל הסלעים לחוף Mogren 1 והמשך לחוף Mogren 2.", map: "Mogren Beach", waze: "Mogren Beach" },
+            { time: "צהריים", name: "ארוחת דגים במרינה", desc: "דגים ופירות ים טריים במרינה הסמוכה לעיר העתיקה.", map: "Budva Marina", waze: "Budva Marina" },
+            { time: "נסיעה", name: "🚘 נסיעה למנזר פודמאינה", desc: "זמן נסיעה מוערך: כ-10 דקות ממרכז העיר.", map: "Podmaine Monastery", waze: "Podmaine Monastery" },
+            { time: "אחה\"צ", name: "מנזר פודמאינה (Podmaine Monastery)", desc: "ביקור במנזר אורתודוקסי שקט מהמאה ה-15 המשקיף על מפרץ בודווה.", map: "Podmaine Monastery", waze: "Podmaine Monastery" },
+            { time: "נסיעה", name: "🚘 נסיעה לתצפית סווטי סטפן", desc: "זמן נסיעה מוערך: כ-15 דקות.", map: "Sveti Stefan Viewpoint", waze: "Sveti Stefan Viewpoint" },
+            { time: "ערב", name: "סווטי סטפן (Sveti Stefan)", desc: "נסיעה לתצפית ב-E65 בשעת השקיעה.", map: "Sveti Stefan Viewpoint", waze: "Sveti Stefan Viewpoint" }
+        ]
+    },
+    {
+        day: 3, date: "21/09 (ב')", region: "אגם סקאדר ופטרובאץ", icon: "🛶",
+        hotelName: "Infinity Hotel & More, Budva - כולל ארוחת בוקר", 
+        hotelUrl: "https://www.booking.com/hotel/me/infinity-budva.he.html",
+        spots: [
+            { time: "08:30", name: "נסיעה לוירפאזאר", desc: "יציאה מבודווה ל-Virpazar דרך מנהרת Sozina או ההרים. זמן נסיעה מוערך: כ-45 דקות.", map: "Virpazar", waze: "Virpazar" },
+            { time: "09:30", name: "שייט באגם סקאדר", desc: "שייט בסירה (שעה-שעתיים) לצפייה בלוטוסים ובציפורים.", map: "Lake Skadar", waze: "Lake Skadar" },
+            { time: "נסיעה", name: "🚘 נסיעה לתצפית Pavlova Strana", desc: "זמן נסיעה מוערך: כ-35 דקות בכבישים נופיים צרים.", map: "Pavlova Strana Viewpoint", waze: "Pavlova Strana Viewpoint" },
+            { time: "11:30", name: "תצפית Pavlova Strana", desc: "תצפית פנורמית על עיקול ה\"פרסה\" של הנהר.", map: "Pavlova Strana Viewpoint", waze: "Pavlova Strana Viewpoint" },
+            { time: "נסיעה", name: "🚘 נסיעה לפטרובאץ", desc: "זמן נסיעה מוערך: כ-50 דקות.", map: "Petrovac Montenegro", waze: "Petrovac Montenegro" },
+            { time: "13:00", name: "פטרובאץ (Petrovac) ומצודת קסטיו", desc: "ביקור במצודת קסטיו (Kastio) ותצפית על האיים.", map: "Kastio Castle Petrovac", waze: "Kastio Castle Petrovac" },
+            { time: "14:00", name: "🌲 הליכה מהמצודה לחוף Fenix", desc: "המסלול מתחיל ממש מאחורי מצודת קסטיו לכיוון צפון. שביל הליכה מוסדר יחסית שעובר בתוך יער אורנים ומציע צל רב וריח נפלא.", map: "Fenix Beach Petrovac", waze: "Fenix Beach Petrovac" },
+            { time: "15:00", name: "🔦 מעבר דרך המנהרות לחוף Fenix", desc: "אחד משיאי המסלול הוא המעבר דרך שלוש מנהרות חצובות בסלע. מומלץ להצטייד בפנס (או להשתמש בטלפון). מדובר בחוף קטן וחבוי (\"פנינה נסתרת\") שנמצא לפני שמגיעים למלון הגדול והנטוש.", map: "Fenix Beach Petrovac", waze: "Fenix Beach Petrovac" },
+            { time: "18:00", name: "🚘 🚗 חזרה למלון בבודווה", desc: "נסיעה חזרה למלון. זמן נסיעה מוערך: כ-25 דקות להתארגנות וארוחת ערב.", map: "Infinity Hotel Budva", waze: "Infinity Hotel Budva" }
+        ]
+    },
+    {
+        day: 4, date: "22/09 (ג')", region: "סבטי סטפן, סנט סאווה ופרז'נו", icon: "🌅",
+        hotelName: "Infinity Hotel & More, Budva - כולל ארוחת בוקר", 
+        hotelUrl: "https://www.booking.com/hotel/me/infinity-budva.he.html",
+        spots: [
+            { time: "10:00", name: "תצפית E65 סבטי סטפן", desc: "עצירת צילום פנורמית. זמן נסיעה מבודווה: כ-15 דקות.", map: "Sveti Stefan Viewpoint", waze: "Sveti Stefan Viewpoint" },
+            { time: "10:30", name: "ירידה לגשר האי ופארק מילוצ'ר", desc: "חניה ב-E-65 Parking, ירידה לגשר המחבר את האי והליכה מוצלת ב-Park Miločer.", map: "Sveti Stefan Beach", waze: "Sveti Stefan Beach" },
+            { time: "12:00", name: "כפר פרז'נו וארוחת צהריים", desc: "המשך לכפר פרז'נו וארוחת צהריים במסעדות מומלצות כמו Konoba More או La Mar.", map: "Przno Montenegro", waze: "Przno Montenegro" },
+            { time: "13:30", name: "חזרה לחניה ונסיעה לכנסיית סנט סאווה", desc: "חזרה רגלית לחניה ונסיעה לכנסיית סנט סאווה (St. Sava) בכביש מפותל ונופי העולה במעלה ההר.", map: "Church of St. Sava Montenegro", waze: "Church of St. Sava Montenegro" },
+            { time: "14:30", name: "תצפית בכנסיית סנט סאווה", desc: "תצפית פנורמית מרהיבה על קו החוף ומפרץ סבטי סטפן.", map: "Church of St. Sava Montenegro", waze: "Church of St. Sava Montenegro" },
+            { time: "16:00", name: "🚘 🚗 חזרה למלון בבודווה", desc: "נסיעה חזרה למלון (כ-20 דקות) להתארגנות ומנוחה.", map: "Infinity Hotel Budva", waze: "Infinity Hotel Budva" }
+        ]
+    },
+    {
+        day: 5, date: "23/09 (ד')", region: "ז'בליאק והצפון", icon: "🏔️",
+        hotelName: "Holiday Home Vile Calimero, Žabljak", 
+        hotelUrl: "https://www.booking.com/hotel/me/holiday-home-vile-calimero-zabljak.he.html",
+        spots: [
+            { time: "10:00", name: "🔑 יציאה מהמלון בבודווה", desc: "יציאה בשעה 10:00 בבוקר ונסיעה צפונה.", map: "Infinity Hotel Budva", waze: "Infinity Hotel Budva" },
+            { time: "נסיעה", name: "🚘 נסיעה למנזר אוסטרוג", desc: "זמן נסיעה מוערך: כ-1.5 שעות דרך פודגוריצה.", map: "Ostrog Monastery", waze: "Ostrog Monastery" },
+            { time: "צהריים", name: "מנזר אוסטרוג (Monastery Ostrog)", desc: "ביקור במנזר האורתודוקסי המרשים החצוב בתוך צלע הסלע.", map: "Ostrog Monastery", waze: "Ostrog Monastery" },
+            { time: "נסיעה", name: "🚘 נסיעה לז'בליאק", desc: "זמן נסיעה מוערך: כ-2 שעות דרך ניקשיץ'.", map: "Zabljak Montenegro", waze: "Zabljak Montenegro" },
+            { time: "אחה\"צ", name: "🛒 הגעה לז'בליאק והצטיידות", desc: "בהגעה לז'בליאק - עצירה להליכה לסופרמרקט קרוב וטוב להצטיידות לקראת הימים באזור.", map: "Zabljak Supermarket", waze: "Zabljak Supermarket" },
+            { time: "צ'ק-אין", name: "הגעה למקום הלינה", desc: "צ'ק-אין בבית הנופש בעיירה הגבוהה בבלקן.", map: "Holiday Home Vile Calimero Zabljak", waze: "Holiday Home Vile Calimero Zabljak" },
+            { time: "ערב", name: "ארוחת ערב בז'בליאק", desc: "מסעדות מומלצות: Restaurant Or'O או Restoran Durmitor.", map: "Restaurant Or'O Zabljak", waze: "Restaurant Or'O Zabljak" }
+        ]
+    },
+    {
+        day: 6, date: "24/09 (ה')", region: "טבעת דורמיטור", icon: "🌲",
+        hotelName: "Holiday Home Vile Calimero, Žabljak", 
+        hotelUrl: "https://www.booking.com/hotel/me/holiday-home-vile-calimero-zabljak.he.html",
+        spots: [
+            { time: "08:30", name: "האגם השחור (Crno Jezero)", desc: "הקפה מעגלית רגלית של האגם (כשעה וחצי).", map: "Black Lake Durmitor", waze: "Black Lake Durmitor" },
+            { time: "תחנה", name: "🚗 תחילת מסלול טבעת דורמיטור (Durmitor Ring)", desc: "יציאה למסלול הנהיגה ההררי המפורסם סביב שמורת דורמיטור.", map: "Durmitor Ring", waze: "Durmitor Ring" },
+            { time: "10:30", name: "תצפית צ'ורבאץ (Curevac)", desc: "מבט אל קניון נהר הטארה ממעוף הציפור.", map: "Curevac Viewpoint", waze: "Curevac Viewpoint" },
+            { time: "נסיעה", name: "🚘 נסיעה לקניון סושיצה", desc: "זמן נסיעה מוערך: כ-45 דקות דרך נופים אלפיניים.", map: "Susica Canyon", waze: "Susica Canyon" },
+            { time: "12:00", name: "קניון סושיצה (Sušica)", desc: "ירידה בפיתולים חדים אל הקניון דרך Mala Crna Gora.", map: "Susica Canyon", waze: "Susica Canyon" },
+            { time: "14:00", name: "צהריים בכפר טרסה (Trsa)", desc: "עצירה כפרית ב-Etno Selo Montenegro או Restoran Trsa. נסיעה: כ-30 דקות.", map: "Trsa Montenegro", waze: "Trsa Montenegro" },
+            { time: "15:30", name: "מעבר סדלו (Sedlo Pass)", desc: "נסיעה בגובה 1,907 מטר. זמן נסיעה: כ-35 דקות.", map: "Sedlo Pass Durmitor", waze: "Sedlo Pass Durmitor" },
+            { time: "18:00", name: "🚘 🚗 חזרה למלון בז'בליאק", desc: "חזרה למקום הלינה בז'בליאק (כ-25 דקות נסיעה) למנוחה וארוחת ערב.", map: "Holiday Home Vile Calimero Zabljak", waze: "Holiday Home Vile Calimero Zabljak" }
+        ]
+    },
+    {
+        day: 7, date: "25/09 (ו')", region: "קולאשין", icon: "🌉",
+        hotelName: "Wulfenia Hotel & Spa, Kolašin - כולל ארוחת בוקר", 
+        hotelUrl: "https://www.booking.com/hotel/me/wulfenia-and-spa-kolasin.he.html",
+        spots: [
+            { time: "09:00", name: "🔑 יציאה מהמלון בז'בליאק", desc: "יציאה בשעה 09:00 בבוקר לכיוון גשר הטארה.", map: "Holiday Home Vile Calimero Zabljak", waze: "Holiday Home Vile Calimero Zabljak" },
+            { time: "נסיעה", name: "🚘 נסיעה לגשר הטארה", desc: "זמן נסיעה מוערך: כ-25 דקות.", map: "Tara Bridge", waze: "Tara Bridge" },
+            { time: "09:30", name: "גשר הטארה (Đurđevića Tara)", desc: "הליכה על הגשר בגובה 170 מטר ואומגה (Zipline).", map: "Tara Bridge", waze: "Tara Bridge" },
+            { time: "נסיעה", name: "🚘 נסיעה לפארק ביוגרדסקה גורה", desc: "זמן נסיעה מוערך: כ-1.5 שעות לאורך קניון הטארה.", map: "Biogradska Gora", waze: "Biogradska Gora" },
+            { time: "12:30", name: "פארק לאומי ביוגרדסקה גורה", desc: "מסלול הליכה מעגלי סביב האגם ביער בראשיתי עתיק.", map: "Biogradska Gora", waze: "Biogradska Gora" },
+            { time: "נסיעה", name: "🚘 נסיעה לקולאשין", desc: "זמן נסיעה מוערך: כ-25 דקות.", map: "Wulfenia Hotel Kolasin", waze: "Wulfenia Hotel Kolasin" },
+            { time: "16:00", name: "הגעה לקולאשין (Kolašin)", desc: "צ'ק-אין ב-Wulfenia Hotel & Spa 5* וסיור במרכז העיירה.", map: "Wulfenia Hotel Kolasin", waze: "Wulfenia Hotel Kolasin" },
+            { time: "ערב", name: "ארוחת ערב ב-Konoba Vodenica", desc: "חובה להזמין Kačamak.", map: "Konoba Vodenica Kolasin", waze: "Konoba Vodenica Kolasin" }
+        ]
+    },
+    {
+        day: 8, date: "26/09 (ש')", region: "קולאשין (ספא)", icon: "💆",
+        hotelName: "Wulfenia Hotel & Spa, Kolašin - כולל ארוחת בוקר", 
+        hotelUrl: "https://www.booking.com/hotel/me/wulfenia-and-spa-kolasin.he.html",
+        spots: [
+            { time: "כל היום", name: "יום מנוחה ופינוק בספא", desc: "רוגע והתחדשות במתקני הספא והמסאז' במלון Wulfenia.", map: "Wulfenia Hotel Kolasin", waze: "Wulfenia Hotel Kolasin" },
+            { time: "רשות", name: "סיור קל בעיירה", desc: "טיול רגלי קצר בגן הבוטני Dulovina או במרכז העיירה.", map: "Dulovina Botanical Garden", waze: "Dulovina Botanical Garden" }
+        ]
+    },
+    {
+        day: 9, date: "27/09 (א')", region: "צטיניה, סרפנטינות וקוטור", icon: "🏛️",
+        hotelName: "Absolute Adriatic, Kotor", 
+        hotelUrl: "https://www.booking.com/hotel/me/absolute-adriatic.he.html",
+        spots: [
+            { time: "09:00", name: "🔑 יציאה מהמלון בקולאשין", desc: "יציאה בשעה 09:00 בבוקר ונסיעה דרומה לכיוון צטיניה.", map: "Wulfenia Hotel Kolasin", waze: "Wulfenia Hotel Kolasin" },
+            { time: "נסיעה", name: "🚘 נסיעה לצטיניה", desc: "זמן נסיעה מוערך: כ-1.5 שעות דרך קניון נהר המוראצ'ה ופודגוריצה.", map: "Cetinje", waze: "Cetinje" },
+            { time: "תחנה", name: "🏛️ העיר צטיניה (Cetinje)", desc: "סיור בבירה ההיסטורית העתיקה של מונטנגרו, ארמונות ומנזר צטיניה.", map: "Cetinje", waze: "Cetinje" },
+            { time: "נסיעה", name: "🚘 נסיעה לכפר נייגושי", desc: "זמן נסיעה מוערך: כ-30 דקות.", map: "Njegusi Montenegro", waze: "Njegusi Montenegro" },
+            { time: "13:30", name: "טעימות בכפר נייגושי (Njeguši)", desc: "עצירה לטעימת פרושוטו וגבינות בלקניות מסורתיות.", map: "Njegusi Montenegro", waze: "Njegusi Montenegro" },
+            { time: "נסיעה", name: "🚘 נסיעה בסרפנטינות לקוטור", desc: "זמן נסיעה מוערך: כ-45 דקות בירידה זהירה.", map: "Kotor Serpentine", waze: "Kotor Serpentine" },
+            { time: "15:00", name: "סרפנטינות קוטור", desc: "ירידה מרהיבה למפרץ דרך 25 סיבובים חדים ותצפית עוצרת נשימה.", map: "Kotor Serpentine", waze: "Kotor Serpentine" },
+            { time: "16:30", name: "צ'ק-אין בקוטור", desc: "מלון Absolute Adriatic, סיור סמטאות וארוחת ערב.", map: "Absolute Adriatic Kotor", waze: "Absolute Adriatic Kotor" }
+        ]
+    },
+    {
+        day: 10, date: "28/09 (ב')", region: "קוטור העתיקה", icon: "🛡️",
+        hotelName: "Absolute Adriatic, Kotor", 
+        hotelUrl: "https://www.booking.com/hotel/me/absolute-adriatic.he.html",
+        spots: [
+            { time: "08:00", name: "טיפוס למצודת סן ג'ובאני", desc: "טיפוס מוקדם של כ-1,350 מדרגות לאורך החומות.", map: "San Giovanni Fortress Kotor", waze: "San Giovanni Fortress Kotor" },
+            { time: "11:00", name: "העיר העתיקה (Stari Grad)", desc: "שער הים, קתדרלת סנט טריפון, כיכר הנשק ומגדל השעון.", map: "Kotor Old Town", waze: "Kotor Old Town" },
+            { time: "13:00", name: "צהריים במסעדת Tanjga", desc: "בשרים מעולים (BBQ) או מסעדת Konoba Scala Santa.", map: "Tanjga Kotor", waze: "Tanjga Kotor" },
+            { time: "19:00", name: "קוקטייל בשקיעה", desc: "Roof Bar at Hotel Hippocampus.", map: "Hotel Hippocampus Kotor", waze: "Hotel Hippocampus Kotor" }
+        ]
+    },
+    {
+        day: 11, date: "29/09 (ג')", region: "פראסט והרצג נובי", icon: "⛵",
+        hotelName: "Absolute Adriatic, Kotor", 
+        hotelUrl: "https://www.booking.com/hotel/me/absolute-adriatic.he.html",
+        spots: [
+            { time: "09:00", name: "🔑 יציאה מהמלון בקוטור", desc: "יציאה בשעה 09:00 בבוקר ונסיעה לאורך המפרץ לפראסט.", map: "Absolute Adriatic Kotor", waze: "Absolute Adriatic Kotor" },
+            { time: "נסיעה", name: "🚘 נסיעה לפראסט", desc: "זמן נסיעה מוערך: כ-20 דקות.", map: "Perast", waze: "Perast" },
+            { time: "תחנה", name: "⛵ ביקור בעיירה פראסט (Perast)", desc: "הפלגה בסירה לאי 'גבירתנו של הסלעים' וקפה ב-Restaurant Conte.", map: "Perast", waze: "Perast" },
+            { time: "נסיעה", name: "🚘 נסיעה להרצג נובי", desc: "זמן נסיעה מוערך: כ-40 דקות לאורך חוף המפרץ.", map: "Herceg Novi Old Town", waze: "Herceg Novi Old Town" },
+            { time: "13:00", name: "הרצג נובי (Herceg Novi)", desc: "ביקור בעיר העתיקה, טיפוס למבצר Kanli Kula וארוחת צהריים.", map: "Herceg Novi Old Town", waze: "Herceg Novi Old Town" },
+            { time: "16:30", name: "חזרה במעבורת המפרץ", desc: "נסיעה ל-Kamenari (כ-25 דקות) ועלייה למעבורת ל-Lepetane (~5 אירו לרכב).", map: "Kamenari Ferry", waze: "Kamenari Ferry" },
+            { time: "17:30", name: "עצירת שקיעה ב-Verige 65", desc: "דרינק או ארוחה קלה למרגלות המעבורת.", map: "Verige 65", waze: "Verige 65" },
+            { time: "19:00", name: "🚘 🚗 חזרה למלון בקוטור", desc: "חזרה למלון Absolute Adriatic (כ-15 דקות נסיעה) למנוחה וארוחת ערב.", map: "Absolute Adriatic Kotor", waze: "Absolute Adriatic Kotor" },
+            { time: "סיום יום", name: "חזרה למלון", desc: "התארגנות ללילה האחרון בקוטור.", map: "Absolute Adriatic Kotor", waze: "Absolute Adriatic Kotor" }
+        ]
+    },
+    {
+        day: 12, date: "30/09 (ד')", region: "המערה הכחולה", icon: "🌊",
+        hotelName: "Absolute Adriatic, Kotor", 
+        hotelUrl: "https://www.booking.com/hotel/me/absolute-adriatic.he.html",
+        spots: [
+            { time: "בוקר", name: "נסיעה ל-Kayak Rental Veslo", desc: "הגעה לנקודת ההשכרה של הקיאקים בחוף Veslo. זמן נסיעה מקוטור: כ-40 דקות.", map: "Kayak Rental Veslo", waze: "Kayak Rental Veslo" },
+            { time: "לפנה\"צ", name: "שייט בקיאק למערה הכחולה (Blue Cave)", desc: "שייט בקיאק למערה הכחולה והתרעננות בים.", map: "Blue Cave Montenegro", waze: "Blue Cave Montenegro" },
+            { time: "אחה\"צ", name: "🚘 🚗 חזרה למלון בקוטור", desc: "נסיעה חזרה למלון Absolute Adriatic להתארגנות, מנוחה והחלפת בגדים.", map: "Absolute Adriatic Kotor", waze: "Absolute Adriatic Kotor" },
+            { time: "ערב", name: "🍽️ ארוחת ערב מסכמת", desc: "יציאה מהמלון לארוחה חגיגית לסיכום הטיול בעיר העתיקה בקוטור.", map: "Kotor Old Town", waze: "Kotor Old Town" }
+        ]
+    },
+    {
+        day: 13, date: "01/10 (ה')", region: "חזרה ארצה", icon: "🏠",
+        hotelName: "טיסה חזרה לישראל", 
+        hotelUrl: "",
+        spots: [
+            { time: "08:30", name: "🚗 נסיעה לנמל התעופה טיבאט", desc: "נסיעה קצרה מקוטור ל-Tivat Airport. זמן נסיעה מוערך: כ-15 דקות.", map: "Tivat Airport", waze: "Tivat Airport" },
+            { time: "11:00", name: "✈️ טיסת חזור: ISRAIR AIRLINES - 6H 178", desc: "המראה מטיבאט בשעה 11:00. <a href='https://www.iaa.gov.il/airports/ben-gurion/flight-board/' target='_blank' rel='noopener' style='color:#2563eb;text-decoration:underline;'>ללוח הטיסות של רשות שדות התעופה</a>", map: "Tivat Airport", waze: "Tivat Airport" }
+        ]
+    }
 ];
 
-function getInitialDay() {
-  const startDateStr = localStorage.getItem('trip_start_date');
-  if (!startDateStr) return 1;
-
-  const today = new Date();
-  const current = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-
-  const parts = startDateStr.split('-');
-  const start = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
-  const end = new Date(start);
-  end.setDate(start.getDate() + 7);
-
-  if (current >= start && current <= end) {
-    const diffTime = current - start;
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
-    return diffDays;
-  }
-
-  return 1;
-}
-
-function renderNav(activeDay) {
-  const nav = document.getElementById('day-nav');
-  nav.innerHTML = '';
-  itinerary.forEach(item => {
-    const btn = document.createElement('button');
-    btn.className = `day-btn ${item.day === activeDay ? 'active' : ''}`;
-    btn.textContent = `יום ${item.day}`;
-    btn.onclick = () => switchDay(item.day);
-    nav.appendChild(btn);
-  });
-}
-
-function renderDay(dayNum) {
-  const data = itinerary.find(i => i.day === dayNum);
-  const container = document.getElementById('content-area');
-
-  let html = `<h2 class="day-title">${data.title}</h2>`;
-
-  html += `<div class="section"><h3>לוח זמנים מפורט</h3>`;
-  data.timeline.forEach(t => {
-    html += `
-      <div class="timeline-item">
-        <div class="time">${t.time}</div>
-        <div class="details">
-          <h4>${t.title}</h4>
-          <p>${t.desc}</p>
-        </div>
-      </div>
-    `;
-  });
-  html += `</div>`;
-
-  if (data.places && data.places.length > 0) {
-    html += `<div class="section"><h3>נקודות ומיקומים ב-GPS</h3>`;
-    data.places.forEach(p => {
-      html += `
-        <div class="place-card">
-          <h4>${p.name}</h4>
-          <p>${p.note}</p>
-          <a href="${p.link}" target="_blank" class="btn-map">פתח בגוגל מפות 📍</a>
-        </div>
-      `;
+// רישום ה-Service Worker מתוך קובץ ה-sw.js החיצוני
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('SW registered successfully!', reg))
+            .catch(err => console.log('SW registration failed:', err));
     });
-    html += `</div>`;
-  }
-
-  if (data.notes && data.notes.length > 0) {
-    html += `<div class="section important-notes"><h3>דגשים חשובים ליום זה</h3><ul>`;
-    data.notes.forEach(n => {
-      html += `<li>${n}</li>`;
-    });
-    html += `</ul></div>`;
-  }
-
-  container.innerHTML = html;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function switchDay(dayNum) {
-  renderNav(dayNum);
-  renderDay(dayNum);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const dateInput = document.getElementById('trip-date');
-  const storedDate = localStorage.getItem('trip_start_date');
-  if (storedDate && dateInput) {
-    dateInput.value = storedDate;
-  }
-
-  const initialDay = getInitialDay();
-  renderNav(initialDay);
-  renderDay(initialDay);
-
-  if (dateInput) {
-    dateInput.addEventListener('change', (e) => {
-      localStorage.setItem('trip_start_date', e.target.value);
-      const day = getInitialDay();
-      switchDay(day);
-    });
-  }
-
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW reg error:', err));
-  }
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (installBtn) installBtn.hidden = false;
 });
+
+if (installBtn) {
+    installBtn.addEventListener('click', () => {
+        installBtn.hidden = true;
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+        }
+    });
+}
+
+window.addEventListener('online', updateOnlineStatus);
+window.addEventListener('offline', updateOnlineStatus);
+function updateOnlineStatus() {
+    const banner = document.getElementById('offlineBanner');
+    if (banner) banner.hidden = navigator.onLine;
+}
+
+let activeDay = 1;
+
+function renderApp() {
+    updateOnlineStatus();
+    renderHotel();
+    renderNav();
+    renderSpots();
+}
+
+function renderHotel() {
+    const hotelDiv = document.getElementById('hotelCard');
+    const currentDay = montenegroTrip.find(d => d.day === activeDay);
+    if (hotelDiv && currentDay) {
+        if (currentDay.hotelUrl) {
+            hotelDiv.innerHTML = `🏨 <strong style="color: #0f172a;">בסיס לינה:</strong> <a href="${currentDay.hotelUrl}" target="_blank" rel="noopener" style="color: #2563eb; text-decoration: underline; font-weight: 600;">${currentDay.hotelName}</a>`;
+        } else {
+            hotelDiv.innerHTML = `🏨 <strong style="color: #0f172a;">בסיס לינה:</strong> ${currentDay.hotelName}`;
+        }
+    }
+}
+
+function renderNav() {
+    const nav = document.getElementById('daysNav');
+    if (!nav) return;
+    nav.innerHTML = montenegroTrip.map(d => `
+        <button class="day-tab ${d.day === activeDay ? 'active' : ''}" onclick="switchDay(${d.day})">
+            ${d.icon} יום ${d.day} (${d.date.split(' ')[0]})
+        </button>
+    `).join('');
+}
+
+function switchDay(day) {
+    activeDay = day;
+    renderApp();
+}
+
+function renderSpots() {
+    const list = document.getElementById('itineraryList');
+    if (!list) return;
+    const currentDay = montenegroTrip.find(d => d.day === activeDay);
+    if (!currentDay) return;
+    
+    list.innerHTML = `
+        <h2 style="margin: 0 0 1.25rem 0; font-size: 1.25rem; font-weight: 700; color: #0f172a; border-right: 4px solid #2563eb; padding-right: 0.5rem;">${currentDay.icon} ${currentDay.date} - ${currentDay.region}</h2>
+        ${currentDay.spots.map(s => `
+            <div class="spot-card">
+                <div class="spot-header">
+                    <h3 class="spot-title">${s.name}</h3>
+                    <span class="spot-time">${s.time}</span>
+                </div>
+                <p class="spot-desc">${s.desc}</p>
+                <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+                    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.map)}" target="_blank" rel="noopener" class="spot-link">📍 Google Maps</a>
+                    <a href="https://waze.com/ul?q=${encodeURIComponent(s.waze)}&navigate=yes" target="_blank" rel="noopener" class="spot-link" style="color: #059669;">🚘 Waze</a>
+                </div>
+            </div>
+        `).join('')}
+    `;
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderApp);
+} else {
+    renderApp();
+}
