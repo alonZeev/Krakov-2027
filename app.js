@@ -1,3 +1,4 @@
+// תוכנית טיול מפורטת ל-8 ימים בדרום פולין (מבוסס על קובץ ה-PDF)
 const polandTrip = [
     {
         day: 1, date: "יום 1", region: "נחיתה • פארק לאומי אויצוב • קניות בקרקוב • נסיעה לזאב", icon: "🌲",
@@ -62,7 +63,7 @@ const polandTrip = [
             { time: "10:30 - 14:00", name: "🎗️ סיור מודרך באושוויץ 1 ובבירקנאו", desc: "סיור עוצמתי בבלוקים של אושוויץ 1, מעבר בשאטל החינמי של המוזיאון למחנה בירקנאו, סיור ברציף הרכבות, הצריפים ושרידי המשרפות.", map: "Auschwitz II Birkenau", waze: "Auschwitz II Birkenau" },
             { time: "14:15 - 15:30", name: "🚘 נסיעה מאושוויץ לקרקוב", desc: "איסוף הרכב מהחניון ונסיעה מזרחה בכביש A4 האגרה לכיוון קרקוב (כ-1.15 שעות נסיעה).", map: "The Loft Hotel Krakow", waze: "The Loft Hotel Krakow" },
             { time: "15:30 - 16:30", name: "🏨 צ'ק-אין במלון The Loft Hotel בקרקוב", desc: "הגעה למלון The Loft Hotel Adults Only Krakow (כתובת: Dietla 113), פריקת המזוודות והתארגנות קצרה.", map: "The Loft Hotel Krakow", waze: "The Loft Hotel Krakow" },
-            { time: "16:30 - 17:30", name: "🔑 נסיעה והחזרת הרכב השכור", desc: "יציאה מהמלון ונסיעה לנקודת החזרת הרכב בקרקוב (תחנה מרכזית / Galeria Krakowska / שדה התעופה), השלמת הליך החזרת הרכב וסיום פרק الנהיגה. חזרה למלון במונית/Uber.", map: "Galeria Krakowska", waze: "Galeria Krakowska" },
+            { time: "16:30 - 17:30", name: "🔑 נסיעה והחזרת הרכב השכור", desc: "יציאה מהמלון ונסיעה לנקודת החזרת הרכב בקרקוב (תחנה מרכזית / Galeria Krakowska / שדה התעופה), השלמת הליך החזרת הרכב וסיום פרק הנהיגה. חזרה למלון במונית/Uber.", map: "Galeria Krakowska", waze: "Galeria Krakowska" },
             { time: "18:00+", name: "🌆 סיור ערב רגוע וארוחת ערב", desc: "סיור רגלי פסטורלי בסביבת המלון: הליכה קצרה לרובע היהודי (Kazimierz), 15 דקות הליכה לכיכר השוק המרכזית (Rynek Główny), וארוחת ערב.", map: "Rynek Glowny Krakow", waze: "Rynek Glowny Krakow" }
         ],
         notes: [
@@ -173,33 +174,43 @@ function updateOnlineStatus() {
     if (banner) banner.hidden = navigator.onLine;
 }
 
-// Logic: Determine initial active day based on current date vs trip start date
 let activeDay = 1;
 
-function getInitialDay() {
-    // If a trip start date is saved in localStorage, test current date
-    const startDateStr = localStorage.getItem('poland_trip_start');
-    if (!startDateStr) return 1;
+/**
+ * לוגיקת זיהוי יום אוטומטית לחלוטין מתוך שעון המכשיר:
+ * ללא שום שדות קלט / אינפוט מהמשתמש.
+ */
+function getAutoDayFromDevice() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1; // 1-12
+    const date = now.getDate(); // 1-31
 
-    const today = new Date();
-    const current = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    // במידה והגדרתם תאריך טיול ספציפי ב-localStorage (אם תרצו בעתיד)
+    // ברירת המחדל תמיד בודקת את תאריך המכשיר:
+    // במידה והתאריך היום איננו בטווח ימי הטיול המוגדרים -> חוזר ליום 1
+    const tripStartStr = localStorage.getItem('poland_trip_start_date');
+    if (tripStartStr) {
+        const parts = tripStartStr.split('-');
+        if (parts.length === 3) {
+            const start = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+            const current = new Date(year, month - 1, date);
+            const end = new Date(start);
+            end.setDate(start.getDate() + 7); // 8 ימים
 
-    const parts = startDateStr.split('-'); // Format YYYY-MM-DD
-    if (parts.length !== 3) return 1;
-
-    const start = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
-    const end = new Date(start);
-    end.setDate(start.getDate() + 7); // 8 days total (Day 1 to Day 8)
-
-    // If current date is within the trip range
-    if (current >= start && current <= end) {
-        const diffTime = current - start;
-        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
-        return diffDays;
+            if (current >= start && current <= end) {
+                const diffDays = Math.floor((current - start) / (1000 * 60 * 60 * 24)) + 1;
+                return { day: diffDays, statusMsg: `📅 תאריך המכשיר: ${date}/${month}/${year} (יום ${diffDays} לטיול)` };
+            }
+        }
     }
 
-    // If before or after trip dates, default to Day 1
-    return 1;
+    // אם התאריך לפני/אחרי או לא הוגדר טווח - האפליקציה נפתחת ישירות ביום 1
+    const formattedDate = `${String(date).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
+    return { 
+        day: 1, 
+        statusMsg: `📅 תאריך המכשיר: ${formattedDate} (נפתח ביום 1)`
+    };
 }
 
 function renderApp() {
@@ -274,6 +285,13 @@ function renderSpots() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    activeDay = getInitialDay();
+    const result = getAutoDayFromDevice();
+    activeDay = result.day;
+    
+    const statusDiv = document.getElementById('statusDevice');
+    if (statusDiv) {
+        statusDiv.innerHTML = `<span>${result.statusMsg}</span> <span>📱 אוטומטי</span>`;
+    }
+
     renderApp();
 });
